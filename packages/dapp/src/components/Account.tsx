@@ -60,7 +60,7 @@ export const Account = ({ account }: AccountProps) => {
         size={7}
         scale={4}
       />
-      {size !== 'small' &&
+      {(size !== 'small' && size !== 'medium') &&
         <AccountHash>
           {shortAccount}
         </AccountHash>

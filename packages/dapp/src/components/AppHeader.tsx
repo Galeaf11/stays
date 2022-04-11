@@ -8,19 +8,31 @@ import { SignInButton, SignOutButton } from '../components/buttons/web3Modal';
 import { GlobalMenu } from './Routes';
 import { useWindowsDimension } from '../hooks/useWindowsDimension';
 
-export const ResponsiveAlign = (winWidth: number) => {
+export const ResponsiveSmallLogo = (winWidth: number) => {
   if (winWidth >= 1300) {
     return '48vw';
   } else if (winWidth >= 1000) {
-    return '48vw';
-  } else if (winWidth >= 768) {
-    return '48vw';
-  } else if (winWidth >= 600) {
-    return '48vw';
+    return '47vw';
+  } else if (winWidth <= 1000) {
+    return '46vw';
+  } else if (winWidth <= 768) {
+    return '44vw';
+  } else if (winWidth <= 600) {
+    return '41vw';
   } else if (winWidth <= 500) {
-    return '48vw';
-  } else if (winWidth <= 400) {
-    return '48vw';
+    return '40vw';
+  }
+};
+
+export const ResponsiveLogo = (winWidth: number) => {
+  if (winWidth >= 1300) {
+    return '35vw';
+  } else if (winWidth <= 1100) {
+    return '29vw';
+  } else if (winWidth >= 1000) {
+    return '32vw';
+  } else if (winWidth <= 1000) {
+    return '30vw';
   }
 };
 
@@ -31,7 +43,7 @@ export const AppHeader = () => {
 
   const navigate = useNavigate();
   const { account } = useAppState();
-
+  console.log('WINDOW', winWidth)
   const returnLocation = useMemo(
     () => (state as any)?.location as Location,
     [state]
@@ -58,7 +70,7 @@ export const AppHeader = () => {
         <Image
           style={{
             position: 'absolute',
-            left: ResponsiveAlign(winWidth),
+            left: ResponsiveSmallLogo(winWidth),
           }}
           src='logo-small.png'
           height='32px'
@@ -67,7 +79,7 @@ export const AppHeader = () => {
         : <Image
           style={{
             position: 'absolute',
-            left: '35vw',
+            left: ResponsiveLogo(winWidth),
           }}
           src='/logo.png'
           height='32px'
